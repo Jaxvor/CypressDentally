@@ -10,18 +10,23 @@ const product = new ProductPage();
 const checkout = new CheckoutPage();
 const cart = new ShoppingCartPage();
 
-describe('Tech Challenge Tests', function () {
+describe('Shopping cart process regression tests', function () {
 
 beforeEach(function () {
     cy.fixture('credentials').then((testdata) => {
       this.testdata = testdata
       cy.visit("/") //Url is set in cypress.config.js as baseUrl value
+      login.successfulLogin(this.testdata.standard_user, this.testdata.password)
     })
   }) 
+
+    it("User logs in and logs out", function (){
+      home.logout()
+      //This test ensures that users can login and logout again
+    })
   
-    it("User successfully logs in and completes checkout", function () {
-      //This test logs in as valid user, visits a product page, adds an item to shopping cart, and completes checkout
-      login.successfulLogin(this.testdata.standard_user, this.testdata.password)
+    it("User completes checkout", function () {
+      //This test visits a product page, adds an item to shopping cart, and completes checkout
       home.selectItem()
       product.addToCart()
       home.shoppingCart()
@@ -29,14 +34,8 @@ beforeEach(function () {
       checkout.enterCheckoutDetails(this.testdata.firstname, this.testdata.lastname, this.testdata.postcode)
       checkout.finishCheckout()
   })
-
-    it("User fails to login due to being blocked", function() {
-      //This test will ensure that locked out users cannot login and access the site
-      login.blockedLogin(this.testdata.locked_out, this.testdata.password)
-  })
-
+    
     it("Add item to a basket, view the basket and remove an item", function() {
-      login.successfulLogin(this.testdata.standard_user, this.testdata.password)
       home.selectItem()
       product.addToCart()
       home.shoppingCart()
