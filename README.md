@@ -20,6 +20,6 @@ In order to run the automation and use the CYPRESS UI you will need to use the f
 
  To run a particular test file headlessly in Chrome without using the Cypress UI, enter this command:
  
- npx cypress run --spec "cypress/e2e/Tests.cy.js" -b chrome
+ npx cypress run --spec "cypress/e2e/ShoppingTests.cy.js" -b chrome
  
  The results will be displayed in the IDE terminal once complete.
