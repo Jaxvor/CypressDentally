@@ -10,7 +10,7 @@ https://www.browserstack.com/guide/how-to-run-cypress-test-automation
 
 
 # Build and Test
-In order to run the automation and use the CYPRESS UI you will need to start with the following command:
+In order to run the automation and use the CYPRESS UI you will need to use the following command in your IDE terminal:
  
  npx cypress open
  
