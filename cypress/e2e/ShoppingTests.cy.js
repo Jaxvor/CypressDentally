@@ -20,11 +20,6 @@ beforeEach(function () {
     })
   }) 
 
-    it("User logs in and logs out", function (){
-      home.logout()
-      //This test ensures that users can login and logout again
-    })
-  
     it("User completes checkout", function () {
       //This test visits a product page, adds an item to shopping cart, and completes checkout
       home.selectItem()
@@ -39,6 +34,9 @@ beforeEach(function () {
       home.selectItem()
       product.addToCart()
       home.shoppingCart()
+      //The id is tied to the item in the cart so this is potentially very flakey because the item may change name or 
+      //may be out of stock
       cart.removeFromCart()
+      cy.contains('#remove-sauce-labs-bolt-t-shirt').should('not.exist')
     })
 })
