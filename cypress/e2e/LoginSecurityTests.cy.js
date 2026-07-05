@@ -24,7 +24,4 @@ describe('Login security tests', function () {
         home.logout()
         cy.contains('Login').should('be.visible')
     })
-  
-
-
 })
