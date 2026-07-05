@@ -1,6 +1,10 @@
 class HomePage {
     selectItem(){
-    cy.get("#item_1_title_link").click()
+        cy.get("#item_1_title_link").click()
+    }
+
+    selectTshirt(){
+        cy.contains('Sauce Labs Bolt T-Shirt').click()
     }
 
     shoppingCart(){
