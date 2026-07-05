@@ -34,9 +34,14 @@ beforeEach(function () {
       home.selectItem()
       product.addToCart()
       home.shoppingCart()
-      //The id is tied to the item in the cart so this is potentially very flakey because the item may change name or 
-      //may be out of stock
       cart.removeFromCart()
-      cy.contains('#remove-sauce-labs-bolt-t-shirt').should('not.exist')
+      //As this test removes the only item from the basket, we can check that the 'Remove' button is no longer visible to ensure that the item has been removed
+      cy.contains('Remove').should('not.exist')
+    })
+
+    it("User clicks on product title and is taken to the corresponding product page", function() {
+      home.selectTshirt()
+      cy.contains('Sauce Labs Bolt T-Shirt').should('be.visible')
+      cy.contains('Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.').should('be.visible')
     })
 })
