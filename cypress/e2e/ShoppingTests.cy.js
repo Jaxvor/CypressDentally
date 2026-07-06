@@ -28,6 +28,7 @@ beforeEach(function () {
       home.checkout()
       checkout.enterCheckoutDetails(this.testdata.firstname, this.testdata.lastname, this.testdata.postcode)
       checkout.finishCheckout()
+      cy.contains('Thank you for your order!').should('be.visible')
   })
     
     it("Add item to a basket, view the basket and remove an item", function() {
